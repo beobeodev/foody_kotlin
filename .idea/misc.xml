@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/kotlin_projects/foody_kotlin/app/src/main/res/layout/fragment_recipes.xml" value="0.25" />
+        <entry key="..\:/kotlin_projects/foody_kotlin/app/src/main/res/layout/recipes_row_layout.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_emoji_emotions_24.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/drawable/ic_menu_book_24.xml" value="0.20052083333333334" />
