@@ -2,10 +2,12 @@ package com.beo.foody.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.beo.foody.databinding.RecipesRowLayoutBinding
 import com.beo.foody.models.FoodRecipe
 import com.beo.foody.models.Result
+import com.beo.foody.util.RecipessDifferentUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
     private var listRecipe = emptyList<Result>()
@@ -43,7 +45,11 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() 
     }
 
     fun setData(newData: FoodRecipe) {
+        // calculate different of old list and new list
+        val recipesDiffUtil = RecipessDifferentUtil(listRecipe, newData.results)
+        val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         listRecipe = newData.results
-        notifyDataSetChanged() 
+        // dispatch update if new changes, help improve performance instead of using notifyDataSetChanged()
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }
