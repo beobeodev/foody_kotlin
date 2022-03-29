@@ -48,7 +48,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/courgette"
                         android:maxLines="2"
-                        android:text="Text View"
+                        android:text="@{result.title}"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -60,7 +60,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/courgette"
                         android:maxLines="3"
-                        android:text="Text View" />
+                        android:text="@{result.summary}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -83,6 +83,7 @@
                                 android:id="@+id/textView_heart"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                setNumberOfLikes="@{result.aggregateLikes}"
                                 android:text="100"
                                 android:textColor="@android:color/holo_red_light" />
                         </LinearLayout>
@@ -103,6 +104,7 @@
                                 android:id="@+id/textView_clock"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                setNumberOfMinutes="@{result.readyInMinutes}"
                                 android:text="100"
                                 android:textColor="@color/yellow" />
                         </LinearLayout>
@@ -115,13 +117,15 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                applyVeganColor="@{resu lt.vegan}"
                                 android:src="@drawable/ic_leaf_24" />
 
                             <TextView
                                 android:id="@+id/textView_leaf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="100" />
+                                applyVeganColor="@{result.vegan}"
+                                android:text="Vegan" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
