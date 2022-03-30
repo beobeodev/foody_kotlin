@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.beo.foody.MainViewModel
 import com.beo.foody.R
+import com.beo.foody.RecipesViewModel
 import com.beo.foody.adapters.RecipesAdapter
 import com.beo.foody.util.Constants
 import com.beo.foody.util.NetworkResult
@@ -23,8 +24,10 @@ class RecipesFragment : Fragment() {
     private val recipesAdapter by lazy {
         RecipesAdapter()
     }
+
     private lateinit var recipesFragmentView : View
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,7 @@ class RecipesFragment : Fragment() {
         recipesFragmentView = inflater.inflate(R.layout.fragment_recipes, container, false)
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        recipesViewModel = ViewModelProvider(requireActivity()).get(RecipesViewModel::class.java)
 
         setUpRecyclerView()
         requestApiData()
@@ -42,7 +46,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getRecipes(applyQueries())
+        mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner, {response ->
             when (response) {
                 is NetworkResult.Success -> {
